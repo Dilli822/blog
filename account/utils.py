@@ -15,7 +15,7 @@ def send_email_view(request, email):
     token = generate_random_token()
 
     # Construct the password reset link
-    reset_link = f'https://blogapp-b3ah90p27-dilli822s-projects.vercel.app/blog-app/reset-password/{token}/confirm/'
+    reset_link = f'https://blogapp-five-ochre.vercel.app/blog-app/reset-password/{token}/confirm/'
 
     # Save the token in the database and set its expiration time
     user_data = UserData.objects.get(email=email)
@@ -49,7 +49,7 @@ def send_email_view(request, email):
     """
 
     # Create EmailMultiAlternatives object and attach the HTML content
-    msg = EmailMultiAlternatives(subject, '', 'testingbot202424@gmail.com', [email])
+    msg = EmailMultiAlternatives(subject, 'Password Reset Link', 'testingbot202424@gmail.com', [email])
     msg.attach_alternative(html_content, "text/html")
 
     # Send the email
